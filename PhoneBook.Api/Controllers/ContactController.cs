@@ -16,7 +16,7 @@ public class ContactController : ControllerBase
         _contactService = contactService;
     }
 
-    [HttpPost]
+    [HttpGet]
     [Route("{id}")]
     public IActionResult GetById(int id)
     {
@@ -28,5 +28,29 @@ public class ContactController : ControllerBase
 
         var result = contact.ToContactModel();
         return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("bytag/{tagId}")]
+    public IActionResult GetContactsByTagId(int tagId)
+    {
+        var contact = _contactService.GetContactsWithTagId(tagId);
+
+        var result = contact.Select(x => x.ToContactModel()).ToList();
+        return Ok(result);
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public IActionResult DeleteContact(int id)
+    {
+        var contact = _contactService.GetContactById(id);
+        if (contact == null)
+        {
+            return NotFound();
+        }
+
+        _contactService.DeleteContact(id);
+        return Ok();
     }
 }
