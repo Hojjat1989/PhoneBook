@@ -7,7 +7,7 @@ public interface IContactRepository
     Contact GetById(int id);
     IEnumerable<Contact> GetAllWithTagId(int tagId);
 
-    void Add(Contact contact);
+    void Add(CreateContact contact);
     void Update(UpdateContact contact);
     void Delete(int id);
 }

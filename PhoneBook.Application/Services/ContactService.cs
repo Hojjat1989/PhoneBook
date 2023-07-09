@@ -24,7 +24,7 @@ public class ContactService : IContactService
         return _contactRepository.GetAllWithTagId(tagId);
     }
 
-    public void CreateContact(Contact contact)
+    public void CreateContact(CreateContact contact)
     {
         _contactRepository.Add(contact);
     }

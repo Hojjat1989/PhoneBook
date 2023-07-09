@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace PhoneBook.Api.Models;
+namespace PhoneBook.Domain;
 
-public class EditContactModel
+public class CreateContact
 {
     public int Id { get; set; }
     public string Name { get; set; }
     public string PhoneNumber { get; set; }
+    public Tag[] Tags { get; set; }
 }

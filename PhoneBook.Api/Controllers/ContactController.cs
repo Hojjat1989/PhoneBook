@@ -17,6 +17,14 @@ public class ContactController : ControllerBase
         _contactService = contactService;
     }
 
+    [HttpPost]
+    [Route("")]
+    public IActionResult Add([FromBody] CreateContact contact)
+    {
+        _contactService.CreateContact(contact);
+        return Ok();
+    }
+
     [HttpGet]
     [Route("{id}")]
     public IActionResult GetById(int id)
@@ -32,7 +40,7 @@ public class ContactController : ControllerBase
     }
 
     [HttpPost]
-    [Route("")]
+    [Route("update")]
     public IActionResult Update([FromBody] UpdateContact model)
     {
         var contact = _contactService.GetContactById(model.Id);
