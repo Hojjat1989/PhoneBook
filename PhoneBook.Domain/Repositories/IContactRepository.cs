@@ -9,5 +9,5 @@ public interface IContactRepository
 
     void Add(Contact contact);
     void Update(Contact contact);
-    void Delete(Contact contact);
+    void Delete(int id);
 }
