@@ -29,7 +29,7 @@ public class ContactService : IContactService
         _contactRepository.Add(contact);
     }
 
-    public void UpdateContact(Contact contact)
+    public void UpdateContact(UpdateContact contact)
     {
         _contactRepository.Update(contact);
     }

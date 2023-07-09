@@ -30,7 +30,7 @@ namespace PhoneBook.Infrastructure
             _contacts.Add(contact);
         }
 
-        public void Update(Contact contact)
+        public void Update(UpdateContact contact)
         {
             var existingContact = GetById(contact.Id);
             if (existingContact != null)

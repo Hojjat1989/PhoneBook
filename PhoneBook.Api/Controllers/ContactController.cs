@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Api.Utilities;
 using PhoneBook.Application.Interfaces;
+using PhoneBook.Domain;
 
 namespace PhoneBook.Api.Controllers;
 
@@ -28,6 +29,20 @@ public class ContactController : ControllerBase
 
         var result = contact.ToContactModel();
         return Ok(result);
+    }
+
+    [HttpPost]
+    [Route("")]
+    public IActionResult Update([FromBody] UpdateContact model)
+    {
+        var contact = _contactService.GetContactById(model.Id);
+        if (contact == null)
+        {
+            return NotFound();
+        }
+
+        _contactService.UpdateContact(model);
+        return Ok();
     }
 
     [HttpGet]

@@ -8,6 +8,6 @@ public interface IContactRepository
     IEnumerable<Contact> GetAllWithTagId(int tagId);
 
     void Add(Contact contact);
-    void Update(Contact contact);
+    void Update(UpdateContact contact);
     void Delete(int id);
 }
